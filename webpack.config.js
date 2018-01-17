@@ -14,8 +14,8 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    main: [/*'webpack/hot/dev-server', 'babel-polyfill',*/ './app/main.js'],
-    sub: [/*'webpack/hot/dev-server', 'babel-polyfill',*/ './app/sub.js']
+    main: [/*'webpack/hot/dev-server', */ './app/main.js'],
+    sub: [/*'webpack/hot/dev-server', */ './app/sub.js']
   },
 
   output: {

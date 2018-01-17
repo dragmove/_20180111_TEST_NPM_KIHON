@@ -1,6 +1,5 @@
-console.log('define :', define);
-
 define(['jquery', 'kihon'], function ($, Kihon) {
+  console.log('$ :', $);
   console.log('Kihon :', Kihon);
 
   var fullSizeBg = new Kihon.FullSizeBg({
@@ -12,4 +11,3 @@ define(['jquery', 'kihon'], function ($, Kihon) {
     alignY: 'center' // 'top' or 'center' or 'bottom'
   }).init();
 });
-
