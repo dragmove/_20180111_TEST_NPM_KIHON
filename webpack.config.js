@@ -1,26 +1,19 @@
-var webpack = require('webpack'),
-  path = require('path');
+var path = require('path'),
+  webpack = require('webpack'),
+  dirName = path.resolve('./'),
+  distDirName = path.resolve('./build');
 
 module.exports = {
-  devServer: {
-    contentBase: './build/',
-    noInfo: true, //  --no-info option
-    // host: '',
-    port: 9001,
-    hot: true,
-    inline: true
-  },
-
-  context: __dirname,
+  context: dirName,
 
   entry: {
-    main: [/*'webpack/hot/dev-server', */ './app/main.js'],
-    sub: [/*'webpack/hot/dev-server', */ './app/sub.js']
+    main: ['./app/main.js'],
+    sub: ['./app/sub.js']
   },
 
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(distDirName)
   },
 
   module: {
@@ -29,6 +22,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader'
+      }, {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
       }
     ]
   },
@@ -55,5 +52,14 @@ module.exports = {
       banner: '',
       raw: true
     })
-  ]
+  ],
+
+  devServer: {
+    contentBase: './build',
+    noInfo: true,
+    host: '',
+    port: 9001,
+    hot: true,
+    inline: true
+  }
 };

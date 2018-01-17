@@ -2,6 +2,7 @@ import {FullSizeBg} from 'kihon';
 
 console.log('FullSizeBg :', FullSizeBg);
 
+/*
 var fullSizeBg = new FullSizeBg({
   wrap: $('.wrap-full-size-bg'),
   imgWrap: $('.full-size-bg'),
@@ -10,3 +11,4 @@ var fullSizeBg = new FullSizeBg({
   alignX: 'center', // 'left' or 'center' or 'right'
   alignY: 'center' // 'top' or 'center' or 'bottom'
 }).init();
+  */
