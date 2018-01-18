@@ -3,63 +3,72 @@ var path = require('path'),
   dirName = path.resolve('./'),
   distDirName = path.resolve('./build');
 
-module.exports = {
-  context: dirName,
+function createConfig(isDebug, options = {}) {
+  let devTool = '',
+    externals = [],
+    plugins = [],
+    appEntry = {
+      main: ['./app/main.js'],
+      sub: ['./app/sub.js']
+    };
 
-  entry: {
-    main: ['./app/main.js'],
-    sub: ['./app/sub.js']
-  },
+  return {
+    context: dirName,
 
-  output: {
-    filename: "[name].js",
-    path: path.resolve(distDirName)
-  },
+    entry: appEntry,
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
-      }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader'
-      }
-    ]
-  },
+    output: {
+      filename: "[name].js",
+      path: path.resolve(distDirName)
+    },
 
-  // https://webpack.js.org/configuration/devtool/
-  devtool: 'eval-source-map',
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel-loader'
+        }, {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'eslint-loader'
+        }
+      ]
+    },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
-      mangle: false,
-      output: {
-        beautify: true,
-        comments: true,
-      },
-      compress: {
-        unused: false,
-        drop_console: false,
-        warnings: false
-      }
-    }),
+    // https://webpack.js.org/configuration/devtool/
+    devtool: 'eval-source-map',
 
-    new webpack.BannerPlugin({
-      banner: '',
-      raw: true
-    })
-  ],
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: false,
+        mangle: false,
+        output: {
+          beautify: true,
+          comments: true,
+        },
+        compress: {
+          unused: false,
+          drop_console: false,
+          warnings: false
+        }
+      }),
 
-  devServer: {
-    contentBase: './build',
-    noInfo: true,
-    host: '',
-    port: 9001,
-    hot: true,
-    inline: true
-  }
-};
+      new webpack.BannerPlugin({
+        banner: '',
+        raw: true
+      })
+    ],
+
+    devServer: {
+      contentBase: './build',
+      noInfo: true,
+      host: '',
+      port: 9001,
+      hot: true,
+      inline: true
+    }
+  };
+}
+
+module.exports = createConfig;
