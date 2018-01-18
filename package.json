@@ -20,7 +20,8 @@
     "eslint": "^4.15.0",
     "eslint-loader": "^1.9.0",
     "gulp": "^3.9.1",
-    "kihon": "0.0.2",
+    "kihon": "0.0.5",
+    "underscore": "^1.8.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.10.0"
   }

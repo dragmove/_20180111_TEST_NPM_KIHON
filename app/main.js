@@ -1,6 +1,15 @@
-import {FullSizeBg} from 'kihon';
 
-console.log('FullSizeBg :', FullSizeBg);
+import {Dog} from 'webpack-library-starter';
+
+const dog = new Dog();
+console.log('dog.name :', dog.name);
+
+alert(`dog.name : ${dog.name}`);
+
+/*
+import * as Kihon from 'kihon';
+
+console.log('Kihon :', Kihon);
 
 /*
 var fullSizeBg = new FullSizeBg({
